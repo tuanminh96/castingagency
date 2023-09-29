@@ -4,7 +4,7 @@ from sqlalchemy import Column, String, Integer, Date, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-database_path = 'postgres://postgres_deployment_example_nl7f_user:HdPIbUUAuJR6vRv3VNPjExxRpFBgCve9@dpg-ck6h72g8elhc73dr5qlg-a.oregon-postgres.render.com/postgres_deployment_example_nl7f'
+database_path = 'postgresql://postgres_deployment_example_nl7f_user:HdPIbUUAuJR6vRv3VNPjExxRpFBgCve9@dpg-ck6h72g8elhc73dr5qlg-a.oregon-postgres.render.com/postgres_deployment_example_nl7f'
 
 db = SQLAlchemy()
 
