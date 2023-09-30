@@ -38,12 +38,12 @@ def index():
 
 @app.route('/login')
 def login():
-    url = "https://dev-4yewlodtqwpxz0xf.us.auth0.com/authorize?audience=capstone&response_type=token&client_id=8uN9Sn2mv9tzwzbg1VdStZ8PfO1pUtbj&redirect_uri=http://127.0.0.1:5000/"
+    url = "https://dev-4yewlodtqwpxz0xf.us.auth0.com/authorize?audience=capstone&response_type=token&client_id=8uN9Sn2mv9tzwzbg1VdStZ8PfO1pUtbj&redirect_uri=https://casting-agency-service-tuanpm22.onrender.com/"
     return redirect(url)
 
 @app.route('/logout')
 def logout():
-    url = "https://dev-4yewlodtqwpxz0xf.us.auth0.com/oidc/logout?post_logout_redirect_uri=http://127.0.0.1:5000/"
+    url = "https://dev-4yewlodtqwpxz0xf.us.auth0.com/oidc/logout?post_logout_redirect_uri=https://casting-agency-service-tuanpm22.onrender.com/"
     return redirect(url)
 
 @app.route('/actors')
