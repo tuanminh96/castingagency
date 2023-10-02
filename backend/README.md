@@ -88,6 +88,7 @@ The `--reload` flag will detect file changes and restart the server automaticall
    - Go to: https://casting-agency-service-tuanpm22.onrender.com/login
    - Type in account password for each role
    - After login successfully, copy the access_token from the url, this will be the JWT token to use to test the endpoint on Postman
+   - Go to: https://casting-agency-service-tuanpm22.onrender.com/logout to logout from the system, to login with another role
 
 7. Test your endpoints with [Postman](https://getpostman.com).
    - Open postman, paste the Bearer token Authentication is the JWT token copy from above
