@@ -1,4 +1,4 @@
-# Coffee Shop Backend
+# Casting Agency Backend
 
 ## Getting Started
 
@@ -52,36 +52,62 @@ The `--reload` flag will detect file changes and restart the server automaticall
 
 ### Setup Auth0
 
-1. Create a new Auth0 Account
-2. Select a unique tenant domain
-3. Create a new, single page web application
-4. Create a new API
-   - in API Settings:
-     - Enable RBAC
-     - Enable Add Permissions in the Access Token
-5. Create new API permissions:
-   - `get:drinks`
-   - `get:drinks-detail`
-   - `post:drinks`
-   - `patch:drinks`
-   - `delete:drinks`
-6. Create new roles for:
-   - Barista
-     - can `get:drinks-detail`
-     - can `get:drinks`
-   - Manager
-     - can perform all actions
+1. Role Casting Assistant:
+   - Permission:
+      - `get:actors-detail`
+      - `get:movies-detail`
+   - Account: trung@gmail.com/Abcde12345@
+
+2. Role Casting Director:
+   - Permission:
+      - `delete:actors`
+      - `get:actors-detail`
+      - `get:movies-detail`
+      - `patch:actors`
+      - `patch:movies`
+      - `post:actors`
+   - Account: nganld@gmail.com/Abcde12345@
+
+3. Role Executive Producer:
+   - Permission:
+      - `delete:actors`
+      - `get:actors-detail`
+      - `get:movies-detail`
+      - `patch:actors`
+      - `patch:movies`
+      - `post:actors`
+      - `post:movies`
+      - `delete:movies`
+   - Account: trung@gmail.com/Abcde12345@
+4. Role - API mapping
+   - Role Casting Assistant: GET /actors, GET /movies
+   - Role Casting Director: All role of Casting Assisstant & DELETE /actors, POST /actors, PATCH /actors, PATCH /movies
+   - Role Executive Producer: All roles and can access to all API
+
+4. Login to application and get JWT token for each role
+   - Go to: https://casting-agency-service-tuanpm22.onrender.com/login
+   - Type in account password for each role
+   - After login successfully, copy the access_token from the url, this will be the JWT token to use to test the endpoint on Postman
+
 7. Test your endpoints with [Postman](https://getpostman.com).
-   - Register 2 users - assign the Barista role to one and Manager role to the other.
-   - Sign into each account and make note of the JWT.
-   - Import the postman collection `./starter_code/backend/udacity-fsnd-udaspicelatte.postman_collection.json`
-   - Right-clicking the collection folder for barista and manager, navigate to the authorization tab, and including the JWT in the token field (you should have noted these JWTs).
-   - Run the collection and correct any errors.
-   - Export the collection overwriting the one we've included so that we have your proper JWTs during review!
+   - Open postman, paste the Bearer token Authentication is the JWT token copy from above
+   - Test with each endpoints:
+   - GET /actors: https://casting-agency-service-tuanpm22.onrender.com/actors
+   - GET /movies: https://casting-agency-service-tuanpm22.onrender.com/movies
+   - DELETE /actors: https://casting-agency-service-tuanpm22.onrender.com/actors/1
+   - DELETE /movies: https://casting-agency-service-tuanpm22.onrender.com/movies/1
+   - POST /actors: https://casting-agency-service-tuanpm22.onrender.com/actors 
+      - Body {"age": 34,"gender": "Male","name": "Ngan"}
+   
+   ### Release date format %yyyy_mm_dd&
+   - POST /movies: https://casting-agency-service-tuanpm22.onrender.com/movies 
+      - Body {"title": "Gon with the wind","release_date": "2023-07-09"}
+
+   - PATCH /actors: https://casting-agency-service-tuanpm22.onrender.com/actors/1
+      - Body {"age": 26,"gender": "Male","name": "Minh Tuan"}
+   - PATCH /movies: https://casting-agency-service-tuanpm22.onrender.com/movies /1
+      - Body {"title": "Avenger: End game","release_date": "2025-07-09"}
 
 ### Implement The Server
-
-There are `@TODO` comments throughout the `./backend/src`. We recommend tackling the files in order and from top to bottom:
-
-1. `./src/auth/auth.py`
-2. `./src/api.py`
+- Application was deployed to Render
+- Live endpoint: https://casting-agency-service-tuanpm22.onrender.com/

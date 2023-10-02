@@ -23,15 +23,7 @@ with app.app_context():
     db_drop_and_create_all()
 
 # ROUTES
-'''
-@TODO implement endpoint
-    GET /actors
-        it should require the 'get:actors-detail' permission
-        it should be a public endpoint
-        it should contain only the actor.short() data representation
-    returns status code 200 and json {"success": True, "actors": actors} where actors is the list of actors
-        or appropriate status code indicating reason for failure
-'''
+
 @app.route('/')
 def index():
     return "Welcome to Capstone !"
@@ -46,6 +38,14 @@ def logout():
     url = "https://dev-4yewlodtqwpxz0xf.us.auth0.com/oidc/logout?post_logout_redirect_uri=https://casting-agency-service-tuanpm22.onrender.com/"
     return redirect(url)
 
+'''
+    GET /actors
+        it should require the 'get:actors-detail' permission
+        it should be a public endpoint
+        it should contain only the actor.short() data representation
+    returns status code 200 and json {"success": True, "actors": actors} where actors is the list of actors
+        or appropriate status code indicating reason for failure
+'''
 @app.route('/actors')
 @requires_auth('get:actors-detail')
 def get_actor():
@@ -59,7 +59,6 @@ def get_actor():
     }
 
 '''
-@TODO implement endpoint
     GET /movies
         it should require the 'get:movies-detail' permission
         it should be a public endpoint
@@ -80,7 +79,6 @@ def get_movie():
     }
 
 '''
-@TODO implement endpoint
     DELETE /actors
         it should require the 'delete:actors' permission
     returns status code 200 and json {"success": True, "id": id} where id is the id of deleted actor
@@ -104,7 +102,6 @@ def actor_delete(id):
         abort(422)
 
 '''
-@TODO implement endpoint
     DELETE /movies
         it should require the 'delete:movies' permission
         it should contain the drink.long() data representation
@@ -129,7 +126,6 @@ def movie_delete(id):
         abort(422)
 
 '''
-@TODO implement endpoint
     POST /movies
         it should create a new row in the movies table
         it should require the 'post:movies' permission
@@ -160,7 +156,6 @@ def create_movies():
 
 
 '''
-@TODO implement endpoint
     POST /actors
         it should create a new row in the movies table
         it should require the 'post:movies' permission
@@ -191,7 +186,6 @@ def create_actors():
 
 
 '''
-@TODO implement endpoint
     PATCH /actors/<id>
         where <id> is the existing model id
         it should respond with a 404 error if <id> is not found
@@ -233,7 +227,6 @@ def patch_actors(id):
     
 
 '''
-@TODO implement endpoint
     PATCH /movies/<id>
         where <id> is the existing model id
         it should respond with a 404 error if <id> is not found
